@@ -51,7 +51,13 @@ def knn(k,dc_listings1,num_rooms,num_bathrooms,num_bedrooms):
     dc_listings1["total_distance"] = (dc_listings1["distance_accomodates"]+dc_listings1["distance_bathrooms"]+dc_listings1["distance_bedrooms"])**0.5
     dc_listings1 = dc_listings1.sort_values(by=["total_distance"])
     mean = dc_listings1["price"][:k].mean()
-    return mean
+    error = (dc_listings1[:k]["price"]-mean)**2
+    return mean,(error.sum()/len(error))**0.5
     
-print(knn(5,dc_listings1,10,3,2))
-    
+print(knn(5,dc_listings1,10,20,30))
+dc_listings1["latitude"]
+len(list(dc_listings))
+list(dc_listings)
+dc_listings["maximum_nights"].value_counts()
+dc_listings1["maximum_nights"] = (dc_listings["maximum_nights"]-dc_listings["maximum_nights"].mean())/dc_listings["maximum_nights"].std()
+dc_listings1["maximum_nights"]
